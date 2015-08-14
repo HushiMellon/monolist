@@ -4,14 +4,24 @@
       <div class="item-box">
         <div class="image">
           <div class="img-wrap">
-            <% #TODO 商品画像 %>
-            <%= image_tag("no-image.png" , alt: item.get('ItemAttributes/Title')) %>
+            <!--追加-->
+      <% @img = item.get('LargeImage/URL') %><!--@imgにURLを代入-->
+          
+    <% if @img.nil? %><!--代入したものが空かどうか確認-->
+  
+      <%= image_tag("no-image.png" , alt: item.get('ItemAttributes/Title')) %>  
+      <% else %> 
+      <%= image_tag item.get('LargeImage/URL') , {:style => 'border: none;'} %>
+       <% end %>
+       <!--追加-->
+       
           </div>
         </div>
         <div class="detail">
           <p class="title">
-            <% #TODO 商品タイトル %>
-            仮タイトル
+            <!--追加-->
+            <%=  item.get('ItemAttributes/Title') %>
+            <!--追加-->
           </p>
         </div>
         <div class="action clearfix">
