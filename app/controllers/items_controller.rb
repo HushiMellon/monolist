@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     @items_name = params[:q]
      if @items_name.present?
       Amazon::Ecs.debug = true
-      response = Amazon::Ecs.item_search(params[:q] , 
+      response = Amazon::Ecs.item_search(@items_name, 
                                   :search_index => 'All' , 
                                   :response_group => 'Medium' , 
                                   :country => 'jp')
