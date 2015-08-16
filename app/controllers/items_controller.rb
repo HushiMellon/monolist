@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
                                   :response_group => 'Medium' , 
                                   :country => 'jp')
       @amazon_items = response.items
-      end
+     end
       
   end
 

@@ -3,13 +3,17 @@
     <div class="item-single-main">
       <div class="image">
         <div class="img-wrap">
-          <% #TODO 商品イメージ %>
-          <%= image_tag("no-image.png" , alt: @item.title) %>
+        
+            <% if @item.large_image.nil? %><!--代入したものが空かどうか確認-->
+              <%= image_tag("no-image.png" , alt: @item.title) %>  
+            <% else %> 
+              <%= image_tag @item.large_image , {:style => 'border: none;'} %>
+            <% end %>
+ 
         </div>
       </div>
       <div class="title">
-        <% #TODO 商品タイトル %>
-        仮タイトル
+       <%=  @item.title %>
       </div>
       <%= render 'action' , item: @item %>
     </div>
