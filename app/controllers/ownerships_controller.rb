@@ -52,10 +52,10 @@ class OwnershipsController < ApplicationController
     
   
     if params[:type] == "Have"
-      @item = haves.haved
+      @item = current_user.haves.find(params[:item_id])
       current_user.have(@item)
     else
-      @item = wants.wanted
+      @item = current_user.wants.find(params[:item_id])
       current_user.want(@item)
     end
   end
