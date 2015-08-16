@@ -2,8 +2,8 @@ class OwnershipsController < ApplicationController
   before_action :logged_in_user
 
   def create
-    @hw = params[:type]
-    @user_id = params[:id]
+   
+  
     
     
     if params[:asin]
@@ -37,15 +37,14 @@ class OwnershipsController < ApplicationController
     # Wantボタンがされた時には「Want」が設定されています。
     #@item = Item.find(params[:item_id])
     if params[:type] == "Have"
-      current_user.have(@item.id)
+      current_user.have(@item)
     else
-      current_user.want(@item.id)
+      current_user.want(@item)
     end
   end
 
   def destroy
-    @user_id = params[:id]
-    @item = Item.find_by_id(params[:item_id])
+  #    @item = Item.find_by_id(params[:item_id])
 
     # TODO 紐付けの解除。 
     # params[:type]の値ににHavedボタンが押された時にはの時は「Have」,
@@ -53,9 +52,11 @@ class OwnershipsController < ApplicationController
     
   
     if params[:type] == "Have"
-      current_user.have(@item.id)
+      @item = haves.haved
+      current_user.have(@item)
     else
-      current_user.want(@item.id)
+      @item = wants.wanted
+      current_user.want(@item)
     end
   end
 end
