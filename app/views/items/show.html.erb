@@ -1,3 +1,10 @@
+<% content_for :title do %>
+  <%= @item.title %>-
+<% end %>
+
+<% content_for :description do %>
+  <%= @item.title %>に関する情報です。この商品を欲しい人、持ってる人を表示しています。
+<% end %>
 <div class="container">
   <div class="container-inner inner-sm clearfix">
     <div class="item-single-main">
@@ -21,14 +28,19 @@
       <div class="side-box">
         <h4 class="side-box-title">Haveしたユーザー</h4>
         <div class="side-box-body">
-          <% # TODO Haveしたユーザー一覧 %>
+          <% @haves.each do |d| %>
+      <%= link_to gravatar_for(d ,size: 20),d%>
+      <% end %>
 
         </div>
       </div>
       <div class="side-box">
         <h4 class="side-box-title">Wantしたユーザー</h4>
         <div class="side-box-body">
-          <% # TODO Wantしたユーザー一覧 %>
+      <% @wants.each do |d| %>
+        <%= link_to gravatar_for(d,size: 20),d%>
+      <% end %>
+         
         </div>
       </div>
       <div class="text-center">

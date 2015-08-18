@@ -16,6 +16,8 @@ class UsersController < ApplicationController
   
   def show
     @items = @user.items
+
+    
   end
 
   private

@@ -1,3 +1,11 @@
+<% content_for :title do %>
+  <%= user.name %>-
+<% end %>
+
+<% content_for :description do %>
+  <%= user.name %>のモノページ。<%= user.name %>の欲しいモノ、持ってるモノを表示しています。
+<% end %>
+
 <div class="user-profile">
   <div class="icon">
     <%= gravatar_for user, size: 100 %>
